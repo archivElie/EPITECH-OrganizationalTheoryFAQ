@@ -28,20 +28,24 @@ class IndexCore {
     /*
     ** this function get all the files that get .php extension in the directory
     */
-    function get_all_files_php ($directory)
+    function get_all_files_php ($directory, $page)
     {
         $var = [];
         $tab = scandir ($directory);
         foreach($tab as $file){
         $filepath = pathinfo($file);
-        if ($filepath['extension'] === 'php')
+        if ($filepath['filename'] === $page) {
+            if ($filepath['extension'] === 'php')
             $var[] = $file;
         else if ($filepath['extension'] === 'phtml')
             $var[] = $file;
         }
-//        print_r($var);
+
+        }
+//       print_r($var);
         return $var;
     }
+
 
     /*
     ** this function encrypt things !

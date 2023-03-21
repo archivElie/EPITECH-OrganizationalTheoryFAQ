@@ -31,6 +31,8 @@ echo "
 echo <<<HTML
 <ul>
 <li><a href="index.php?pages=home">Home</a></li>
+
+<li><a href="index.php?pages=formular">Formular</a></li>
 </ul>
 HTML;
 
@@ -41,24 +43,19 @@ echo "</div></header>
 
 ";
 
-if (isset($_GET["pages"]))
-{
+if (isset($_GET["pages"])) {
     $pages = htmlspecialchars($_GET["pages"]);
     $tmp = 0;
-    $ta = $_SESSION["IndexCore"]->get_all_files_php("sheets/");
-    
-    foreach ($ta as $l){
-        //        if (strpos($l, $pages.".php") === 0)
-        {
-            $tmp = 1;
-            include ("sheets/".$l);
-        }
-        
+    $ta = $_SESSION["IndexCore"]->get_all_files_php("sheets/", $pages);
+    foreach ($ta as $l) {
+        $tmp = 1;
+        include ("sheets/".$l);
     }
-    if ($tmp === 0)
-    echo "Error 404<br>";
-    
+    if ($tmp === 0) {
+        echo "Error 404<br>";
+    }
 }
+
 
 if (isset($_GET['hide']) == FALSE)	    
 echo"	
