@@ -1,5 +1,5 @@
 <h1>Formulaire ORGTheory</h1>
-<form action="" method="post">
+<form action="scripts/savecsv.php" method="post">
   <label for="nom_prenom">Quel est votre nom et votre prénom ?</label><br>
   <input type="text" id="nom_prenom" name="nom_prenom"><br>
 
